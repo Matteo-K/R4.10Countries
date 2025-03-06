@@ -83,7 +83,7 @@ const part1_test = [
     fonction : moreLanguages
   },
   {
-    consigne : "* Q5 - withCommonLanguage() : Tableau des pays ayant au moins un voisin parlant l’une de  ses  langues.  Affichez  aussi  les  pays  voisins  (objets  Country)  et  les  langues  en question (objets Language).",
+    consigne : "Q5 - withCommonLanguage() : Tableau des pays ayant au moins un voisin parlant l’une de  ses  langues.  Affichez  aussi  les  pays  voisins  (objets  Country)  et  les  langues  en question (objets Language).",
     fonction : withCommonLanguage
   },
   {
@@ -100,13 +100,16 @@ const part1_test = [
   }
 ]
 
-$("header").after(
-  `
-  <form>
-    <fieldset id="part1">
-      <legend>Partie 1</legend>
-    </fieldset>
-  </form>
-  `
-);
+function affiche_question(partie, questions) {
+  $("header").after(
+    `
+    <form>
+      <fieldset id="#{partie}">
+        <legend>Partie 1</legend>
+      </fieldset>
+    </form>
+    `
+  );
+}
+
 
