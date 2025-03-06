@@ -1,6 +1,8 @@
 # R4.A.10 projet Countries
 
-## Avant-propos
+## Kylian HOUEDEC & Mattéo KERVADEC
+
+### Avant-propos
 
 Ce projet va vous permettre de mettre en œuvre, en 2 étapes, les concepts vus en TD et dans les premières séances de TP. 
 
@@ -14,7 +16,7 @@ d’Application Web Monopage (Single Page App). Vous aurez à manipuler le DOM.
 
 Les  données  qui  serviront  à  remplir  votre  application  proviendront  d’une  API WebService.
 
-## Consignes
+### Consignes
 
 1) Vous coderez en **JS** et vous pourrez utiliser **JQuery** 3.x que vous devrez télécharger si besoin (pas de CDN). Pas d’autre librairie, ni framework. 
 2) Vous mettrez vos pages en forme avec du **CSS** et, si vous le souhaitez, avec du **SASS**. Pas de framework CSS (Bootstrap ou autre). 
