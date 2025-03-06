@@ -24,3 +24,7 @@ Les  données  qui  serviront  à  remplir  votre  application  proviendront  d�
 4) Vous devrez **nommer** vos scripts, vos classes, etc. **comme indiqué** dans le sujet. 
 5)  Vous devrez rendre un **détail de la participation** de chaque membre en pourcentage d’implication sur chaque partie. 
 6) Utilisez **console.table()** au lieu de **console.log()** pour afficher les objets. Le non respect des consignes sera pris en compte dans la note finale (points en moins, non correction, etc.) 
+
+### Accès au site
+
+- [Page de test](https://matteo-k.github.io/R4.10Countries/html/test/test.html)
