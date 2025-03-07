@@ -112,4 +112,6 @@ function affiche_question(partie, questions) {
   );
 }
 
-console.log(all_currencies);
+
+console.log(Language.fill_languages(countries));
+
