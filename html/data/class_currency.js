@@ -38,7 +38,12 @@ class Currency {
   }
 }
 
-function fill_currencies (currencies) {
+function fill_currencies(currencies) {
+
+  if (!Array.isArray(currencies)) {
+    console.warn("La monnaie n'est pas une liste ou n'est pas définit");
+    return [];
+  }
   return currencies.map((currency) => {
     return new Currency(currency);
   });
@@ -47,5 +52,3 @@ function fill_currencies (currencies) {
 const all_currencies = countries.map((country) => {
   return fill_currencies(country.currencies);
 });
-
-console.log(all_currencies);
