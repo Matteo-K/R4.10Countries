@@ -101,7 +101,7 @@ const part1_test = [
 ]
 
 function affiche_question(partie, questions) {
-  $("header").after(
+  $("main").append(
     `
     <form>
       <fieldset id="#{partie}">
