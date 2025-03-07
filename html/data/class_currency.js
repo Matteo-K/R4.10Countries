@@ -9,6 +9,38 @@ class Currency {
     this._symbol = currency.symbol;
   }
 
+  /**
+   * Méthode staticqui remplie 
+   * @param {Array} countries - Listes ded pays
+   * @returns {Array} - Listes de toutes les monnaies de tout les pays
+   */
+  static fill_currencies(countries) {
+    let res = {};
+    countries.forEach(country => {
+
+    // Vérifie si la variable est un tableau
+    if (Array.isArray(country.currencies)) {
+
+      // Construit une liste de monnaies par pays
+      let currencies_tmp = country.currencies.map((currency) => {
+        
+        let c = new Currency(currency);
+        return { [c._code]: c };
+      });
+
+      currencies_tmp.forEach(currency_tmp => {
+        if (!currency_tmp in res) {
+          res = Object.assign(res, currency_tmp);
+        }
+      });
+
+    } else {
+      console.warn("La monnaie n'est pas une liste ou n'est pas définie");
+    }
+    });
+    return res;
+  }
+
   toString() {
     return this._code + ", " + this._name + ", " + this._symbol;
   }
@@ -38,17 +70,4 @@ class Currency {
   }
 }
 
-function fill_currencies(currencies) {
-
-  if (!Array.isArray(currencies)) {
-    console.warn("La monnaie n'est pas une liste ou n'est pas définit");
-    return [];
-  }
-  return currencies.map((currency) => {
-    return new Currency(currency);
-  });
-}
-
-const all_currencies = countries.map((country) => {
-  return fill_currencies(country.currencies);
-});
+const all_currencies = Currency.fill_currencies(countries);
