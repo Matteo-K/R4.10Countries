@@ -112,4 +112,5 @@ function affiche_question(partie, questions) {
   );
 }
 
-
+const c = new Currency(countries[0].currencies);
+console.log(c.toString());
