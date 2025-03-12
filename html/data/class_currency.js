@@ -18,25 +18,23 @@ class Currency {
     let res = {};
     countries.forEach(country => {
 
-    // Vérifie si la variable est un tableau
-    if (Array.isArray(country.currencies)) {
+      // Vérifie si la variable est un tableau
+      if (Array.isArray(country.currencies)) {
 
-      // Construit une liste de monnaies par pays
-      let currencies_tmp = country.currencies.map((currency) => {
-        
-        let c = new Currency(currency);
-        return { [c._code]: c };
-      });
+        // Construit une liste de monnaies par pays
+        let currencies_tmp = country.currencies.map(
+          (currency) => new Currency(currency)
+        );
 
-      currencies_tmp.forEach(currency_tmp => {
-        if (!currency_tmp in res) {
-          res = Object.assign(res, currency_tmp);
-        }
-      });
+        currencies_tmp.forEach(currency_tmp => {
+          if (!res.hasOwnProperty(currency_tmp._code)) {
+            res[currency_tmp._code] = currency_tmp;
+          }
+        });
 
-    } else {
-      console.warn("La monnaie n'est pas une liste ou n'est pas définie");
-    }
+      } else {
+        console.warn("La monnaie n'est pas une liste ou n'est pas définie");
+      }
     });
     return res;
   }

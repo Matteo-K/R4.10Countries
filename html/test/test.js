@@ -112,6 +112,6 @@ function affiche_question(partie, questions) {
   );
 }
 
-
+console.log(Currency.fill_currencies(countries));
 console.log(Language.fill_languages(countries));
 
