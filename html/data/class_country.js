@@ -1,6 +1,7 @@
 class Country {
 
   static _countries = countries;
+  static all_countries = this.fill_countries();
 
   constructor(country) {
     this._name = country.name;
@@ -13,10 +14,13 @@ class Country {
 
   toString() {
     return this._alpha3Code +
-    ", " + this._capital +
     ", " + this._name +
+    ", " + this._capital +
     ", " + this._region +
-    ", " + this._population + "hab";
+    ", " + this._population + " hab" +
+    ", (" + this._borders.map(
+        (voisin) => Country.all_countries[voisin]._name
+      ).join(", ") + ")";
   }
 
   static fill_countries() {

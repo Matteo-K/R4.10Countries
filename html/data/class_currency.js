@@ -1,6 +1,7 @@
 class Currency {
 
   static _countries = countries;
+  static all_currencies = this/this.fill_currencies();
 
   /**
    * @param {Objet} currency - Objet: monnaie d'un pays.
