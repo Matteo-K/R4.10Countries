@@ -11,7 +11,6 @@ function outsideTheContinent() {
  * Affichez aussi les voisins. 
  */
 function moreNeighbors() {
-  console.log();
 }
 
 /**
@@ -67,44 +66,44 @@ function moreTopLevelDomains() {
 
 const part1_test = [
   {
-    enonce : "Q1 - outsideTheContinent()",
+    ennonce : "Q1 - outsideTheContinent()",
     consigne : "Tableau JS des pays (objets Country) dont au moins un pays frontalier n’est pas dans le même continent.",
-    fonction : outsideTheContinent
+    fonction : "outsideTheContinent"
   },
   {
-    enonce : "Q2 - moreNeighbors()",
+    ennonce : "Q2 - moreNeighbors()",
     consigne : "Tableau  des  pays  ayant  le  plus  grand  nombre  de  voisins. Affichez aussi les voisins.",
-    fonction : moreNeighbors
+    fonction : "moreNeighbors"
   },
   {
-    enonce : "Q3 - neighborless()",
+    ennonce : "Q3 - neighborless()",
     consigne : "Tableau des pays n’ayant aucun voisin.",
-    fonction : neighborless
+    fonction : "neighborless"
   },
   {
-    enonce : "Q4 - moreLanguages()",
+    ennonce : "Q4 - moreLanguages()",
     consigne : "Tableau des pays parlant le plus de langues. Affichez aussi les langues (objets Language).",
-    fonction : moreLanguages
+    fonction : "moreLanguages"
   },
   {
-    enonce : "Q5 - withCommonLanguage()",
+    ennonce : "Q5 - withCommonLanguage()",
     consigne : "Tableau des pays ayant au moins un voisin parlant l’une de  ses  langues.  Affichez  aussi  les  pays  voisins  (objets  Country)  et  les  langues  en question (objets Language).",
-    fonction : withCommonLanguage
+    fonction : "withCommonLanguage"
   },
   {
-    enonce : "Q6 - withoutCommonCurrency()",
+    ennonce : "Q6 - withoutCommonCurrency()",
     consigne : "Tableau  des  pays  sans  aucun  voisin ayant au moins une de ses monnaies",
-    fonction : withoutCommonCurrency
+    fonction : "withoutCommonCurrency"
   },
   {
-    enonce : "Q7 - sortingDecreasingDensity()",
+    ennonce : "Q7 - sortingDecreasingDensity()",
     consigne : "Tableau  des  pays  triés  par  ordre  décroissant  de densité de population.",
-    fonction : sortingDecreasingDensity
+    fonction : "sortingDecreasingDensity"
   },
   {
-    enonce : "Q8 - moreTopLevelDomains()",
+    ennonce : "Q8 - moreTopLevelDomains()",
     consigne : "Tableau  des  pays  ayant  plusieurs Top Level Domains Internet.",
-    fonction : moreTopLevelDomains
+    fonction : "moreTopLevelDomains"
   }
 ]
 
@@ -115,7 +114,7 @@ function affiche_question(partie, questions) {
         <legend>Partie ${partie}</legend>
         ${questions.map(question => `
           <div>
-            <label><span>${question.enonce}&nbsp:</span>${question.consigne}</label>
+            <label><span>${question.ennonce}&nbsp:</span>${question.consigne}</label>
             <button type="button" class="exec-btn" data-func="${question.fonction}">Exécuter</button>
           </div>
         `).join('')}
@@ -135,13 +134,6 @@ function affiche_question(partie, questions) {
   });
 }
 
-
-console.log(Currency.fill_currencies(countries));
-console.log(Language.fill_languages(countries));
-console.log(Country.fill_countries(countries));
-
-const c = new Country(countries[0]);
-console.log(c.toString());
-
-console.log(c.getLanguages);
-console.log(c.getPopDensity);
+$(document).ready(function () {
+  affiche_question("1", part1_test);
+});
