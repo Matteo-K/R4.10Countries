@@ -118,3 +118,5 @@ console.log(Country.fill_countries(countries));
 
 const c = new Country(countries[0]);
 console.log(c.toString());
+console.log(c.getPopDensity);
+console.log(c.getCurrencies);
