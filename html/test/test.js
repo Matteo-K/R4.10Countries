@@ -101,16 +101,30 @@ const part1_test = [
 ]
 
 function affiche_question(partie, questions) {
-  $("main").append(
-    `
+  let html = `
     <form>
-      <fieldset id="#{partie}">
-        <legend>Partie 1</legend>
+      <fieldset id="${partie}">
+        <legend>Partie ${partie}</legend>
+        ${questions.map(question => `
+          <label>${question.consigne}</label>
+          <button type="button" class="exec-btn" data-func="${question.fonction}">Exécuter</button>
+        `).join('')}
       </fieldset>
     </form>
-    `
-  );
+  `;
+
+  $("main").append(html);
+
+  $(".exec-btn").on("click", function () {
+    let func = $(this).data("func");
+    if (typeof window[func] === "function") {
+      window[func]();
+    } else {
+      console.error(`Fonction ${func} introuvable`);
+    }
+  });
 }
+
 
 console.log(Currency.fill_currencies(countries));
 console.log(Language.fill_languages(countries));
