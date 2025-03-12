@@ -44,4 +44,26 @@ class Country {
     });
     return res;
   }
+
+  /**
+   * Retourne un tableau des pays frontaliers (les objets Country, pas les codes).
+   * @returns Tableau des pays frontalies
+   */
+  get getPopDensity() {
+    return this._borders.map((voisin) => Country.all_countries[voisin]);
+  }
+
+  /**
+   * retourne un tableau des monnaies (objets Currency)
+   * @returns Tableau des monnaies
+   */
+  get getCurrencies() {
+    // Recherche de l'index
+    const country = Country._countries.find(
+      c => c.alpha3Code === this._alpha3Code
+    );
+    return country.currencies.map(
+      (currency) => new Currency(currency)
+    );
+  }
 }
