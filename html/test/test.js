@@ -17,13 +17,30 @@ function outsideTheContinent() {
  * Affichez aussi les voisins. 
  */
 function moreNeighbors() {
+  const lst_max = Object.values(Country.all_countries).map(
+    (country) => country._borders.length
+  );
+
+  const moreNeighbors = Object.values(Country.all_countries).filter(
+    (country) => country._borders.length === Math.max(...lst_max)
+  );
+
+  console.log(moreNeighbors);
+  moreNeighbors.forEach(country => {
+    console.log("Voisins de " + country._name);
+    country.getBorders.forEach((voisin) => {
+      console.log(voisin.toString());
+    })
+  });
 }
 
 /**
  * Q3 - neighborless() : Tableau des pays n’ayant aucun voisin. 
  */
 function neighborless() {
-  console.log();
+  console.log(Object.values(Country.all_countries).filter(
+    (country) => country._borders.length === 0
+  ));
 }
 
 /**
