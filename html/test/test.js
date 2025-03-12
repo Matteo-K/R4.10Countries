@@ -3,6 +3,12 @@
  * pays frontalier n’est pas dans le même continent.
  */
 function outsideTheContinent() {
+  let tab = []
+
+  Country._countries.forEach(country => {
+    console.log(country);
+  })
+  
   console.log("test");
 }
 
