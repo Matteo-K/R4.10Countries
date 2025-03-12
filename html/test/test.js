@@ -114,4 +114,4 @@ function affiche_question(partie, questions) {
 
 
 console.log(Language.fill_languages(countries));
-
+ 

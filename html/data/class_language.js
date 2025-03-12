@@ -19,11 +19,14 @@ class Language {
     
     static fill_languages(countries){
         return countries.map(countrie => {
-            let iso639 = countrie["languages"]["iso639_2"];
-            let name = countrie["languages"]["name"];
 
-            let l = new Language(iso639, name);
-            return {[l._iso639]: l}
+            countrie.forEach(language => {
+                let iso639 = language["languages"]["iso639_2"];
+                let name = language["languages"]["name"];
+                let l = new Language(iso639, name);
+                return {[l._iso639]: l};
+            });
+
         })
     }
 }
