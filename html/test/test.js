@@ -84,7 +84,12 @@ function withCommonLanguage() {
  * une de ses monnaies. 
  */
 function withoutCommonCurrency() {
-  console.log();
+  Object.values(Country.all_countries).map(
+    (country) => {
+      let voisins = country.getBorders;
+      let monnaies = country.getCurrencies;
+    }
+  );
 }
 
 /**
