@@ -5,11 +5,16 @@
 function outsideTheContinent() {
   let tab = []
 
-  Country._countries.forEach(country => {
-    console.log(country);
+  Object.values(Country.all_countries).forEach(country => {
+    let borderCountry = country.getBorders.find(
+      c => c._region !== country._region
+    )
+    if (borderCountry){
+     tab.push(country);
+    } 
   })
-  
-  console.log("test");
+  console.log(tab);
+  return tab
 }
 
 /**
