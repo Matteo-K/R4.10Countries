@@ -48,7 +48,21 @@ function neighborless() {
  * langues (objets Language). 
  */
 function moreLanguages() {
-  console.log();
+  const lst_max = Object.values(Country.all_countries).map(
+    (country) => country.getLanguages.length
+  );
+
+  const moreLanguages = Object.values(Country.all_countries).filter(
+    (country) => country.getLanguages.length === Math.max(...lst_max)
+  );
+
+  console.log(moreLanguages);
+  moreLanguages.forEach(country => {
+    console.log("Langues de " + country._name);
+    country.getLanguages.forEach((langue) => {
+      console.log(langue.toString());
+    })
+  });
 }
 
 /**
