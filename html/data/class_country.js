@@ -24,7 +24,10 @@ class Country {
   }
 
   get getPopDensity(){
-    return this._population / this._countries.area
+    let countrie = Country._countries.find(
+      c => c.alpha3Code === this._alpha3Code
+    )
+    return this._population / countrie.area;
   }
 
   get getLanguages(){
