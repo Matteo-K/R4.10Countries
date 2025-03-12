@@ -1,4 +1,7 @@
 class Country {
+
+  static _countries = countries;
+
   constructor(country) {
     this._name = country.name;
     this._alpha3Code = country.alpha3Code;
@@ -16,9 +19,9 @@ class Country {
     ", " + this._population + "hab";
   }
 
-  static fill_countries(countries) {
+  static fill_countries() {
     let res = {};
-    countries.forEach(country => {
+    Country._countries.forEach(country => {
       let c = new Country(country);
       res[c._alpha3Code] = c;
     });
