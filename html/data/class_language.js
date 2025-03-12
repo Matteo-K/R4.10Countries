@@ -1,5 +1,7 @@
 class Language {
 
+    static _countries = countries;
+
     constructor(language){
         this._iso639= language.iso639_2
         this._name= language.name;
@@ -17,9 +19,9 @@ class Language {
        return this.getName + " (" + this.getIso639 + ")";
     }
     
-    static fill_languages(countries){
+    static fill_languages(){
         let res = {};
-        countries.forEach(country => {
+        Language._countries.forEach(country => {
 
         // Vérifie si la variable est un tableau
         if (Array.isArray(country.languages)) {
