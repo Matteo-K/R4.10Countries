@@ -1,8 +1,8 @@
 class Language {
 
-    constructor(iso639_2, name){
-        this._iso639= iso639_2
-        this._name= name;
+    constructor(language){
+        this._iso639= language.iso639_2
+        this._name= language.name;
     }
 
     get getName(){
@@ -18,16 +18,29 @@ class Language {
     }
     
     static fill_languages(countries){
-        return countries.map(countrie => {
+        let res = {};
+        countries.forEach(country => {
 
-            countrie.forEach(language => {
-                let iso639 = language["languages"]["iso639_2"];
-                let name = language["languages"]["name"];
-                let l = new Language(iso639, name);
-                return {[l._iso639]: l};
+        // Vérifie si la variable est un tableau
+        if (Array.isArray(country.languages)) {
+
+            // Construit une liste de language par pays
+            let language_tmp = country.languages.map(
+            (language) => new Language(language)
+            );
+
+            language_tmp.forEach(language_tmp => {
+            if (!res.hasOwnProperty(language_tmp._iso639)) {
+                res[language_tmp._iso639] = language_tmp;
+            }
             });
 
-        })
+        } else {
+            console.warn("La Langue n'est pas une liste ou n'est pas définie");
+        }
+        });
+        return res;
     }
+    
 }
 
