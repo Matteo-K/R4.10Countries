@@ -18,14 +18,14 @@ class Currency {
     let res = {};
     countries.forEach(country => {
 
-      // Vérifie si la variable est un tableau
       if (Array.isArray(country.currencies)) {
 
         // Construit une liste de monnaies par pays
         let currencies_tmp = country.currencies.map(
           (currency) => new Currency(currency)
         );
-
+        
+        // Vérification si la monnaie existe déjà
         currencies_tmp.forEach(currency_tmp => {
           if (!res.hasOwnProperty(currency_tmp._code)) {
             res[currency_tmp._code] = currency_tmp;
