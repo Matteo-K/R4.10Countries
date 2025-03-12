@@ -49,7 +49,7 @@ class Country {
    * Retourne un tableau des pays frontaliers (les objets Country, pas les codes).
    * @returns Tableau des pays frontalies
    */
-  get getPopDensity() {
+  get getBorders() {
     return this._borders.map((voisin) => Country.all_countries[voisin]);
   }
 
