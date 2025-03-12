@@ -1,5 +1,7 @@
 class Currency {
 
+  static _countries = countries;
+
   /**
    * @param {Objet} currency - Objet: monnaie d'un pays.
    */
@@ -11,13 +13,11 @@ class Currency {
 
   /**
    * Méthode staticqui remplie 
-   * @param {Array} countries - Listes ded pays
    * @returns {Array} - Listes de toutes les monnaies de tout les pays
    */
-  static fill_currencies(countries) {
+  static fill_currencies() {
     let res = {};
-    countries.forEach(country => {
-
+    Currency._countries.forEach(country => {
       if (Array.isArray(country.currencies)) {
 
         // Construit une liste de monnaies par pays
