@@ -1,6 +1,7 @@
 class Language {
 
     static _countries = countries;
+    static all_language = this.fill_languages();
 
     constructor(language){
         this._iso639= language.iso639_2

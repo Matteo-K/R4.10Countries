@@ -23,6 +23,19 @@ class Country {
       ).join(", ") + ")";
   }
 
+  get getPopDensity(){
+    return this._population / this._countries.area
+  }
+
+  get getLanguages(){
+    let countrie = Country._countries.find(
+      c => c.alpha3Code === this._alpha3Code
+    )
+    return countrie.languages.map( language => {
+      return new Language(language);
+    })
+  }
+
   static fill_countries() {
     let res = {};
     Country._countries.forEach(country => {
