@@ -9,10 +9,11 @@ body {
 header {
   background-color: #141414;
   color: white;
-  position: relative;
   text-align: center;
   padding: 20px;
   height: 5rem;
+  display: flex;
+  justify-content: space-between;
 }
 header h1 {
   margin: 0;
@@ -22,22 +23,15 @@ header h2 {
   margin: 10px 0 0;
   font-size: 1.5em;
 }
-header img {
-  width: 5rem;
-  position: absolute;
-  padding: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-header img:nth-of-type(1) {
-  left: 0;
-}
 header img:nth-of-type(2) {
-  right: 9.5rem;
-  width: 7.5rem;
+  height: 150%;
+  transform: translateY(-15%);
 }
 
 main {
+  position: relative;
+  display: flex;
+  flex-flow: column;
   padding: 20px;
   max-width: 1200px;
   margin: auto;
@@ -45,8 +39,26 @@ main {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
+main:after, main:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3px;
+  z-index: -1;
+  background-image: conic-gradient(from var(--turn), transparent 90%, #005bb5);
+  animation: 3s spin linear infinite alternate;
+}
+main:before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
 
 form {
+  background-color: white;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -76,7 +88,7 @@ form fieldset div span {
   font-weight: bold;
 }
 
-.exec-btn {
+.exec-btn, .btn-stop {
   background-color: #005bb5;
   color: white;
   border: none;
@@ -85,11 +97,34 @@ form fieldset div span {
   cursor: pointer;
   transition: all 0.1s linear;
 }
-.exec-btn:hover {
+.exec-btn:hover, .btn-stop:hover {
   background-color: #004494;
   transform: scale(1.1);
 }
 
+.btn-stop {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.stop-animation:before, .stop-animation:after {
+  animation: none !important;
+}
+
+@property --turn {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin {
+  from {
+    --turn: 0deg;
+  }
+  to {
+    --turn: 360deg;
+  }
+}
 @media (max-width: 768px) {
   main {
     padding: 10px;
@@ -101,5 +136,11 @@ form fieldset div span {
   form fieldset div .exec-btn {
     margin-top: 5px;
     width: 100%;
+  }
+  header {
+    justify-content: center;
+  }
+  header img {
+    display: none;
   }
 }/*# sourceMappingURL=style.css.map */

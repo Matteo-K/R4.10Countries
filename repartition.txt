@@ -1,0 +1,10 @@
+Partie 1
+
+| Tâches         | Kylian HOUEDEC | Mattéo KERVADEC |
+| -------------- | -------------- | --------------- |
+| Class Currency | 0%             | 100%            |
+| Class Language | 100%           | 0%              |
+| Class Country  | 50%            | 50%             |
+| Tests          | 50%            | 50%             |
+
+Partie 2

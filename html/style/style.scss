@@ -22,10 +22,11 @@ header {
   $header-size: 5;
   background-color: $primary-color;
   color: $secondary-color;
-  position: relative;
   text-align: center;
   padding: 20px;
   height: $header-size + rem;
+  display: flex;
+  justify-content: space-between;
 
   h1 {
     margin: 0;
@@ -37,33 +38,46 @@ header {
     font-size: 1.5em;
   }
 
-  img {
-    width: $header-size + rem;
-    position: absolute;
-    padding: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    &:nth-of-type(1) {
-      left: 0;
-    }
-    &:nth-of-type(2) {
-      right: $header-size * 1.5 + 2 + rem;
-      width: $header-size * 1.5 + rem;
-    }
+  img:nth-of-type(2) {
+    height: 150%;
+    transform: translateY(-15%);
   }
 }
 
 main {
+  position: relative;
+  display: flex;
+  flex-flow: column;
   padding: 20px;
   max-width: 1200px;
   margin: auto;
   background-color: $secondary-color;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: $border-radius;
+
+  &:after, &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3px;
+    z-index: -1;
+    background-image: conic-gradient(from var(--turn),transparent 90%, $button-bg);
+    animation: 3s spin linear infinite alternate;
+  } 
+
+  &:before {
+    filter: blur(1.5rem);
+    opacity: .5;
+  }
 }
 
 // Styles du formulaire
 form {
+  background-color: white;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -98,7 +112,7 @@ form {
 }
 
 // Boutons d'exécution
-.exec-btn {
+.exec-btn, .btn-stop {
   background-color: $button-bg;
   color: $secondary-color;
   border: none;
@@ -113,7 +127,32 @@ form {
   }
 }
 
-// Responsive
+.btn-stop {
+  width: fit-content;
+  margin-left: auto; 
+}
+
+.stop-animation {
+  &:before, &:after {
+    animation: none !important;
+  }
+}
+
+@property --turn {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from {
+    --turn : 0deg;
+  }
+  to {
+    --turn : 360deg;
+  }
+}
+
 @media (max-width: 768px) {
   main {
     padding: 10px;
@@ -126,6 +165,13 @@ form {
     .exec-btn {
       margin-top: 5px;
       width: 100%;
+    }
+  }
+
+  header {
+    justify-content: center;
+    img {
+      display: none;
     }
   }
 }

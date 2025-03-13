@@ -222,13 +222,18 @@ function affiche_question(partie, questions) {
 
   $("main").append(html);
 
-  $(".exec-btn").on("click", function () {
+  $(".exec-btn").on("click", () => {
     let func = $(this).data("func");
     if (typeof window[func] === "function") {
       window[func]();
     } else {
       console.error(`Fonction ${func} introuvable`);
     }
+  });
+
+  $(".btn-stop").on("click", (event) => {
+    event.preventDefault();
+    event.currentTarget.parentElement.classList.toggle("stop-animation");
   });
 }
 
