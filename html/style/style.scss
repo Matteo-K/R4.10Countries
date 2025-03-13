@@ -19,13 +19,13 @@ body {
 }
 
 header {
-  $header-size: 5rem;
+  $header-size: 5;
   background-color: $primary-color;
   color: $secondary-color;
   position: relative;
   text-align: center;
   padding: 20px;
-  height: $header-size;
+  height: $header-size + rem;
 
   h1 {
     margin: 0;
@@ -38,7 +38,7 @@ header {
   }
 
   img {
-    width: $header-size;
+    width: $header-size + rem;
     position: absolute;
     padding: 15px;
     top: 50%;
@@ -47,7 +47,7 @@ header {
       left: 0;
     }
     &:nth-of-type(2) {
-      right: 0;
+      width: $header-size * 2 + rem;
     }
   }
 }
