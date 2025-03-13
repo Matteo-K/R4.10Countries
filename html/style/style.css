@@ -1,0 +1,6 @@
+header {
+  transition: background 0.5s;
+}
+header:hover {
+  background-color: blue;
+}/*# sourceMappingURL=style.css.map */

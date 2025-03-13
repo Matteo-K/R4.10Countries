@@ -1,0 +1,6 @@
+header {
+  transition: background .5s;
+  &:hover {
+    background-color: blue;
+  }
+}
