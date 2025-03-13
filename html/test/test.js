@@ -93,7 +93,7 @@ function withCommonLanguage() {
       tab.push(country);
     }
   });
-  console.table(tab);
+  console.log(tab);
   return tab;
 }
 
@@ -155,7 +155,7 @@ function moreTopLevelDomains() {
       tab.push(country);
     }
   })
-  console.table(tab)
+  console.log(tab)
   return tab;
 }
 
