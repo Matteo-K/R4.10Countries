@@ -19,11 +19,13 @@ body {
 }
 
 header {
+  $header-size: 5rem;
   background-color: $primary-color;
   color: $secondary-color;
+  position: relative;
   text-align: center;
   padding: 20px;
-  position: relative;
+  height: $header-size;
 
   h1 {
     margin: 0;
@@ -36,8 +38,9 @@ header {
   }
 
   img {
-    width: 10rem;
+    width: $header-size;
     position: absolute;
+    padding: 15px;
     top: 50%;
     transform: translateY(-50%);
     &:nth-of-type(1) {

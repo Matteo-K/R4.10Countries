@@ -9,9 +9,10 @@ body {
 header {
   background-color: #141414;
   color: white;
+  position: relative;
   text-align: center;
   padding: 20px;
-  position: relative;
+  height: 5rem;
 }
 header h1 {
   margin: 0;
@@ -22,8 +23,9 @@ header h2 {
   font-size: 1.5em;
 }
 header img {
-  width: 10rem;
+  width: 5rem;
   position: absolute;
+  padding: 15px;
   top: 50%;
   transform: translateY(-50%);
 }
