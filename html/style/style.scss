@@ -1,0 +1,112 @@
+// styles.scss
+
+// Variables
+$primary-color: #0073e6;
+$secondary-color: white;
+$background-color: #f4f4f4;
+$text-color: #333;
+$button-bg: #005bb5;
+$button-hover: #004494;
+$border-radius: 8px;
+
+// Styles généraux
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+header {
+  background-color: $primary-color;
+  color: $secondary-color;
+  text-align: center;
+  padding: 20px;
+
+  h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+
+  h2 {
+    margin: 10px 0 0;
+    font-size: 1.5em;
+  }
+}
+
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: $secondary-color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: $border-radius;
+}
+
+// Styles du formulaire
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  fieldset {
+    border: 2px solid $primary-color;
+    border-radius: $border-radius;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+    legend {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: $primary-color;
+      padding: 5px 10px;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// Boutons d'exécution
+.exec-btn {
+  background-color: $button-bg;
+  color: $secondary-color;
+  border: none;
+  padding: 8px 12px;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $button-hover;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  main {
+    padding: 10px;
+  }
+
+  form fieldset div {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .exec-btn {
+      margin-top: 5px;
+      width: 100%;
+    }
+  }
+}
