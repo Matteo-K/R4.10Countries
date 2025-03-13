@@ -23,6 +23,7 @@ header {
   color: $secondary-color;
   text-align: center;
   padding: 20px;
+  position: relative;
 
   h1 {
     margin: 0;
@@ -32,6 +33,19 @@ header {
   h2 {
     margin: 10px 0 0;
     font-size: 1.5em;
+  }
+
+  img {
+    width: 10rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    &:nth-of-type(1) {
+      left: 0;
+    }
+    &:nth-of-type(2) {
+      right: 0;
+    }
   }
 }
 
@@ -87,10 +101,11 @@ form {
   padding: 8px 12px;
   border-radius: $border-radius;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  transition: all 0.1s linear;
 
   &:hover {
     background-color: $button-hover;
+    transform: scale(1.1);
   }
 }
 
