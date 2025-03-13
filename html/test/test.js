@@ -43,9 +43,11 @@ function moreNeighbors() {
  * Q3 - neighborless() : Tableau des pays n’ayant aucun voisin. 
  */
 function neighborless() {
-  console.log(Object.values(Country.all_countries).filter(
+  const res = Object.values(Country.all_countries).filter(
     (country) => country._borders.length === 0
-  ));
+  );
+
+  console.log(res);
 }
 
 /**
@@ -101,20 +103,45 @@ function withCommonLanguage() {
  * une de ses monnaies. 
  */
 function withoutCommonCurrency() {
-  Object.values(Country.all_countries).map(
-    (country) => {
-      let voisins = country.getBorders;
-      let monnaies = country.getCurrencies;
-    }
-  );
+  const res = Object.values(Country.all_countries).filter((country) => {
+
+    // Vérification pour chaque voisin
+    return country.getBorders.every(voisin => {
+      const voisinCurrencies = voisin.getCurrencies;
+
+      // Vérification pour chaque monnaie du pays
+      return country.getCurrencies.every(
+        (currency) => {
+          return !voisinCurrencies.some(
+            (voisin_currency) => 
+              currency._name === voisin_currency._name
+          )
+        }
+      );
+    });
+  });
+
+  console.log(res);
 }
+
 
 /**
  * Q7 - sortingDecreasingDensity() : Tableau  des  pays  triés  par  ordre  décroissant  de 
  * densité de population.
  */
 function sortingDecreasingDensity() {
-  console.log();
+  const res = Object.values(Country.all_countries).sort(
+    (country1, country2) => {
+      const densite1 = country1.getPopDensity;
+      const densite2 = country2.getPopDensity;
+
+      const d1 = isNaN(densite1) ? 0 : densite1;
+      const d2 = isNaN(densite2) ? 0 : densite2;
+      return d1 < d2;
+    }
+  );
+
+  console.log(res);
 }
 
 /**

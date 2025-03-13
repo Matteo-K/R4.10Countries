@@ -6,9 +6,9 @@ class Country {
   constructor(country) {
     this._name = country.name;
     this._alpha3Code = country.alpha3Code;
-    this._capital = country.capital;
-    this._region = country.region;
-    this._population = country.population;
+    this._capital = country.capital ?? "";
+    this._region = country.region ?? "";
+    this._population = country.population ?? 0;
     this._borders = country.borders ?? [];
   }
 
@@ -23,6 +23,10 @@ class Country {
       ).join(", ") + ")";
   }
 
+  /**
+   * Retourne la densité de population du pays (hab. / Km2)
+   * @returns Densité de population (hab. / Km2)
+   */
   get getPopDensity(){
     let countrie = Country._countries.find(
       c => c.alpha3Code === this._alpha3Code
@@ -30,6 +34,35 @@ class Country {
     return this._population / countrie.area;
   }
 
+  /**
+   * Retourne un tableau des pays frontaliers (les objets Country, pas les codes).
+   * @returns Tableau des pays frontalies
+   */
+  get getBorders() {
+    return this._borders.map((voisin) => Country.all_countries[voisin]);
+  }
+
+  /**
+   * Retourne un tableau des monnaies (objets Currency)
+   * @returns Tableau des monnaies
+   */
+  get getCurrencies() {
+    // Recherche de l'index
+    const country = Country._countries.find(
+      c => c.alpha3Code === this._alpha3Code
+    );
+    if (country.currencies) {
+      return country.currencies.map(
+        (currency) => new Currency(currency)
+      );
+    }
+    return [];
+  }
+
+  /**
+   * Retourne un tableau des langues (objets Language)
+   * @returns Tableau des langues
+   */
   get getLanguages(){
     let countrie = Country._countries.find(
       c => c.alpha3Code === this._alpha3Code
@@ -46,27 +79,5 @@ class Country {
       res[c._alpha3Code] = c;
     });
     return res;
-  }
-
-  /**
-   * Retourne un tableau des pays frontaliers (les objets Country, pas les codes).
-   * @returns Tableau des pays frontalies
-   */
-  get getBorders() {
-    return this._borders.map((voisin) => Country.all_countries[voisin]);
-  }
-
-  /**
-   * retourne un tableau des monnaies (objets Currency)
-   * @returns Tableau des monnaies
-   */
-  get getCurrencies() {
-    // Recherche de l'index
-    const country = Country._countries.find(
-      c => c.alpha3Code === this._alpha3Code
-    );
-    return country.currencies.map(
-      (currency) => new Currency(currency)
-    );
   }
 }
