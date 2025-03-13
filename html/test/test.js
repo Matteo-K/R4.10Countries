@@ -72,12 +72,29 @@ function moreLanguages() {
 
 /**
  * Q5 - withCommonLanguage() : Tableau des pays ayant au moins un voisin parlant l’une 
- * de  ses  langues.  Affichez  aussi  les  pays  voisins  (objets  Country)  et  les  langues  en 
+ * de  ses  langues.  Affichez  aussi  les pays  voisins  (objets  Country)  et  les  langues  en 
  * question (objets Language). 
  */
 function withCommonLanguage() {
-  console.log();
+  let tab = [];
+  Object.values(Country.all_countries).forEach((country) => {
+    let voisins = country.getBorders;
+    let langues = country.getLanguages;
+
+    let hasCommonLanguage = voisins.every(voisin => 
+      voisin.getLanguages.some(langue => {
+        langues.includes(langue);
+        })
+    );
+
+    if (!hasCommonLanguage) {
+      tab.push(country);
+    }
+  });
+  console.table(tab);
+  return tab;
 }
+
 
 /**
  * Q6 - withoutCommonCurrency() : Tableau  des  pays  sans  aucun  voisin ayant au moins 
@@ -105,7 +122,14 @@ function sortingDecreasingDensity() {
  * Internet.
  */
 function moreTopLevelDomains() {
-  console.log();
+  let tab = [];
+  Country._countries.forEach(country => {
+    if (country["topLevelDomain"].length > 1){
+      tab.push(country);
+    }
+  })
+  console.table(tab)
+  return tab;
 }
 
 
