@@ -45,7 +45,6 @@ header {
 }
 
 main {
-  position: relative;
   display: flex;
   flex-flow: column;
   padding: 20px;
@@ -56,6 +55,7 @@ main {
   border-radius: $border-radius;
 }
 #main_test {
+  position: relative;
   &:after, &:before {
     content: "";
     position: absolute;
@@ -195,6 +195,39 @@ table {
   }
 }
 
+#img_countries {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+
+  img:not(#img_country) {
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+    width: 3rem;
+    height: 3rem;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  #img_country {
+    width: 20%;
+    height: fit-content;
+    transform: translateY(-50%);
+  }
+}
+
+.imgDetailsOpen {
+  display: flex !important;
+}
 
 @keyframes spin {
   from {

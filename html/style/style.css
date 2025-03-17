@@ -29,7 +29,6 @@ header img:nth-of-type(2) {
 }
 
 main {
-  position: relative;
   display: flex;
   flex-flow: column;
   padding: 20px;
@@ -40,6 +39,9 @@ main {
   border-radius: 8px;
 }
 
+#main_test {
+  position: relative;
+}
 #main_test:after, #main_test:before {
   content: "";
   position: absolute;
@@ -154,6 +156,38 @@ table th, table td {
     padding: 8px;
     font-size: 14px;
   }
+}
+
+#img_countries {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+#img_countries img:not(#img_country) {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  width: 3rem;
+  height: 3rem;
+}
+#img_countries img:not(#img_country):hover {
+  background-color: red;
+}
+#img_countries #img_country {
+  width: 20%;
+  height: -moz-fit-content;
+  height: fit-content;
+  transform: translateY(-50%);
+}
+
+.imgDetailsOpen {
+  display: flex !important;
 }
 
 @keyframes spin {
