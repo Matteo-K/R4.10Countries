@@ -175,9 +175,11 @@ table th, table td {
   right: 5vw;
   width: 3rem;
   height: 3rem;
+  padding: 5px;
+  border-radius: 10%;
 }
 #img_countries img:not(#img_country):hover {
-  background-color: red;
+  background-color: rgb(226, 152, 152);
 }
 #img_countries #img_country {
   width: 20%;
