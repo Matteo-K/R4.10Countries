@@ -10,6 +10,10 @@ class Country {
     this._region = country.region ?? "";
     this._population = country.population ?? 0;
     this._borders = country.borders ?? [];
+
+    // Partie 2
+    this._img = country.flags.png ?? "";
+    this._area = country.area ?? 0
   }
 
   toString() {
