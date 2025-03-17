@@ -145,6 +145,57 @@ form {
   inherits: false;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  
+  thead {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    
+    th {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 2px solid #ddd;
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      td {
+        padding: 10px 15px;
+        border-bottom: 1px solid #ddd;
+
+        img {
+          width: 8em;  // Ajuste la taille de l'image du drapeau
+          height: auto;
+        }
+      }
+    }
+  }
+
+  th, td {
+    text-align: center;
+  }
+  
+  // Style du tableau pour la réactivité
+  @media (max-width: 768px) {
+    table {
+      width: 100%;
+    }
+    th, td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+}
+
+
 @keyframes spin {
   from {
     --turn : 0deg;
