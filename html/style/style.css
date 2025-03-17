@@ -39,7 +39,8 @@ main {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
-main:after, main:before {
+
+#main_test:after, #main_test:before {
   content: "";
   position: absolute;
   height: 100%;
@@ -52,7 +53,7 @@ main:after, main:before {
   background-image: conic-gradient(from var(--turn), transparent 90%, #005bb5);
   animation: 3s spin linear infinite alternate;
 }
-main:before {
+#main_test:before {
   filter: blur(1.5rem);
   opacity: 0.5;
 }

@@ -54,7 +54,8 @@ main {
   background-color: $secondary-color;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: $border-radius;
-
+}
+#main_test {
   &:after, &:before {
     content: "";
     position: absolute;
@@ -68,7 +69,7 @@ main {
     background-image: conic-gradient(from var(--turn),transparent 90%, $button-bg);
     animation: 3s spin linear infinite alternate;
   } 
-
+  
   &:before {
     filter: blur(1.5rem);
     opacity: .5;
