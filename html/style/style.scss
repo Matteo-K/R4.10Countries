@@ -8,6 +8,7 @@ $text-color: #333;
 $button-bg: #005bb5;
 $button-hover: #004494;
 $border-radius: 8px;
+$border_Table_Colors: #ddd;
 
 // Styles généraux
 body {
@@ -78,7 +79,7 @@ main {
 
 // Styles du formulaire
 form {
-  background-color: white;
+  background-color: $secondary-color;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -87,7 +88,7 @@ form {
     border: 2px solid $primary-color;
     border-radius: $border-radius;
     padding: 15px;
-    background: white;
+    background: $secondary-color;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 
     legend {
@@ -103,7 +104,7 @@ form {
       align-items: center;
       margin-bottom: 10px;
       padding: 10px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid $border_Table_Colors;
 
       span {
         font-weight: bold;
@@ -151,13 +152,13 @@ table {
   margin: 20px 0;
   
   thead {
-    background-color: #f4f4f4;
+    background-color: $background-color;
     font-weight: bold;
     
     th {
       padding: 12px 15px;
       text-align: left;
-      border-bottom: 2px solid #ddd;
+      border-bottom: 2px solid $border_Table_Colors;
     }
   }
 
@@ -169,7 +170,7 @@ table {
 
       td {
         padding: 10px 15px;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $border-Table_Colors;
 
         img {
           width: 8em;  // Ajuste la taille de l'image du drapeau
@@ -192,6 +193,18 @@ table {
       padding: 8px;
       font-size: 14px;
     }
+  }
+}
+// Pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  .spanPage {
+    font-size: 16px;
+    font-weight: bold;
   }
 }
 

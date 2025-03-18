@@ -156,6 +156,17 @@ table th, table td {
   }
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.pagination .spanPage {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 @keyframes spin {
   from {
     --turn: 0deg;
