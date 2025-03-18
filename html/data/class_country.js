@@ -4,7 +4,7 @@ class Country {
   static all_countries = this.fill_countries();
 
   constructor(country) {
-    this._name = country.name;
+    this._name = country.translations.fr;
     this._alpha3Code = country.alpha3Code;
     this._capital = country.capital ?? "";
     this._region = country.region ?? "";
