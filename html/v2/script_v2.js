@@ -57,7 +57,6 @@ function removeAllElement(container_selector) {
 }
 
 $(document).ready(function () {
-  displayAllCountries("table", Object.values(Country.all_countries));
   // Initialiser la pagination
   paginations(Object.values(Country.all_countries), elementInPagination, 0);
 
