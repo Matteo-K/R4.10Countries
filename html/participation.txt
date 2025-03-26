@@ -8,3 +8,16 @@ Partie 1
 | Tests          | 50%            | 50%             |
 
 Partie 2
+
+| Tâches        | Kylian HOUEDEC | Mattéo KERVADEC |
+| ------------- | -------------- | --------------- |
+| Modèle        | 50%            | 50%             |
+| Tous les pays | 50%            | 50%             |
+| Pagination    | 100%           | 0%              |
+| Détails       | 0%             | 100%            |
+| Filtrage      | 0%             | 100%            |
+| Tri           | 100%           | 0%              |
+
+Total : 50% / 50%
+
+
