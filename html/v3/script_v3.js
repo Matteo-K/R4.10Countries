@@ -92,17 +92,9 @@ function paginations(array, nbElements = elementInPagination, progression) {
 
 
   // Mettre à jour les boutons de pagination
-  if (pageActuelle > 1 && pageActuelle < totalPages) {
-    $("#prec").prop("disabled", false);
-    $("#suiv").prop("disabled", false);
-  }
-  if (pageActuelle === 1) {
-    $("#prec").prop("disabled", true);
-  }
-  if (pageActuelle === totalPages) {
-    $("#suiv").prop("disabled", true);
-  }
-
+  $("#prec").prop("disabled", pageActuelle === 1);
+  $("#suiv").prop("disabled", pageActuelle === totalPages);
+  
   // Mettre à jour l'affichage de la page
   $(".spanPage").text(`Page ${pageActuelle}`);
   window.scrollTo({
