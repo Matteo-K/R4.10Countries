@@ -1,3 +1,9 @@
+/// Initialisation des variables
+// Pagination
+const elementInPagination = 25;
+let pageActuelle = 1;
+
+// Détails
 let details_prec = null;
 let details_img = null;
 
@@ -20,28 +26,32 @@ function displayAllCountries(container_selecter, array) {
       </tr>
       <tr>
         <td colspan="6">
-          <h3>Pays voisins&nbsp;:</h3>
-          <ul>
-          ${country._borders.map((voisin) => `
-            <li>
-              <figure>
-                <img src="${Country.all_countries[voisin]._img || "../assets/img/drapeau_default.png"}" 
-                  alt="${Country.all_countries[voisin]._name}" 
-                  title="${Country.all_countries[voisin]._name}"
-                >
-                <figcaption>${Country.all_countries[voisin]._name}</figcaption>
-              </figure>
-            </li>
-          `).join('')}
-          </ul>
-        </td>
-      </tr>
+        ${country._borders.length !== 0 ? `
+            <h3>Pays voisins&nbsp;:</h3>
+            <ul>
+            ${country._borders.map(voisin => `
+              <li>
+                <figure>
+                  <img src="${Country.all_countries[voisin]?._img || "../assets/img/drapeau_default.png"}" 
+                    alt="${Country.all_countries[voisin]?._name || "N/A"}" 
+                    title="${Country.all_countries[voisin]?._name || "N/A"}"
+                  >
+                  <figcaption>${Country.all_countries[voisin]?._name || "N/A"}</figcaption>
+                </figure>
+              </li>
+            `).join('')}
+            </ul>
+            ` : ''}
+          </td>
+        </tr>
     `).join('')}
   `;
+
 
   $(container_selecter).append(html)
 }
 
+/// Détails
 function clickCountry(event) {
   $(`#${details_prec} + tr`).removeClass("detailsOpen");
 
@@ -66,10 +76,56 @@ function clickCountry(event) {
   }
 }
 
-$(document).ready(function () {
-  displayAllCountries("tbody", Object.values(Country.all_countries));
-});
-
 $("#img_countries").on("click", () => {
   $("#img_countries").removeClass("imgDetailsOpen");
+});
+
+
+/// Pagination
+function paginations(array, nbElements = elementInPagination, progression) {
+  const totalPages = Math.ceil(array.length / nbElements);
+  removeAllElement("tbody");
+  pageActuelle += progression;
+
+  // Calcul de la tranche des pays à afficher pour la page actuelle
+  displayAllCountries("tbody", array.slice((pageActuelle-1) * nbElements, pageActuelle * nbElements));
+
+
+  // Mettre à jour les boutons de pagination
+  if (pageActuelle > 1 && pageActuelle < totalPages) {
+    $("#prec").prop("disabled", false);
+    $("#suiv").prop("disabled", false);
+  }
+  if (pageActuelle === 1) {
+    $("#prec").prop("disabled", true);
+  }
+  if (pageActuelle === totalPages) {
+    $("#suiv").prop("disabled", true);
+  }
+
+  // Mettre à jour l'affichage de la page
+  $(".spanPage").text(`Page ${pageActuelle}`);
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"});
+}
+
+function removeAllElement(container_selector) {
+  $(container_selector).empty();
+}
+
+
+
+$(document).ready(function () {
+  // Initialiser la pagination
+  paginations(Object.values(Country.all_countries), elementInPagination, 0);
+
+  // Actions sur les boutons de pagination
+  $("#suiv").click(function () {
+    paginations(Object.values(Country.all_countries), elementInPagination, 1);
+  });
+
+  $("#prec").click(function () {
+    paginations(Object.values(Country.all_countries), elementInPagination, -1);
+  });
 });
