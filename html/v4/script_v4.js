@@ -7,6 +7,18 @@ let pageActuelle = 1;
 let details_prec = null;
 let details_img = null;
 
+// Filtre
+const allRegion = Object.values(Country.all_countries).reduce((res, country) => {
+  if (!res.includes(country._region)) {
+    res.push(country._region);
+  }
+  return res;
+}, []);
+
+const langues = Object.values(Language.all_language).sort((langue1, langue2) => {
+  return langue1._name > langue2._name
+});
+
 function displayAllCountries(container_selecter, array) {
   const html = `
     ${array.map(country => `
@@ -85,6 +97,8 @@ $("#img_countries").on("click", () => {
 
 /// Pagination
 function paginations(array, nbElements = elementInPagination, progression) {
+  array = filtre(array);
+
   const totalPages = Math.ceil(array.length / nbElements);
   removeAllElement("tbody");
   pageActuelle += progression;
@@ -101,14 +115,41 @@ function paginations(array, nbElements = elementInPagination, progression) {
   $(".spanPage").text(`Page ${pageActuelle}`);
   window.scrollTo({
     top: 0,
-    behavior: "smooth"});
+    behavior: "smooth"
+  });
 }
 
 function removeAllElement(container_selector) {
   $(container_selector).empty();
 }
 
+function filtre(countries) {
+  const select_region = $("#continent").val();
+  const select_langue = $("#langue").val();
+  const input_pays = $("#nom_pays").val();
 
+  const region_isEmpty = select_region === "default";
+  const langue_isEmpty = select_langue === "default";
+  const pays_isEmpty = input_pays === "";
+
+  return countries.filter((country) => {
+    let checkLangue = langue_isEmpty;
+    if (!langue_isEmpty) {
+      console.log(country.getLanguages);
+      checkLangue = country.getLanguages.some((langue) => langue._name === select_langue)
+    }
+    let checkRegion = country._region === select_region || region_isEmpty;
+    let checkPays = country._name.toLowerCase().includes(input_pays.toLowerCase()) || pays_isEmpty;
+
+    return checkRegion && checkLangue && checkPays;
+  });
+}
+
+function resetFiltre() {
+  $("#continent").val("default");
+  $("#langue").val("default");
+  $("#nom_pays").val("");
+}
 
 $(document).ready(function () {
   // Initialiser la pagination
@@ -121,5 +162,25 @@ $(document).ready(function () {
 
   $("#prec").click(function () {
     paginations(Object.values(Country.all_countries), elementInPagination, -1);
+  });
+
+  /// Filtre
+  // Chargement des filtres
+  allRegion.forEach((region_) => {
+    $("#continent").append(`<option value="${region_}">${region_}</option>`);
+  });
+  langues.forEach((langue) => {
+    $("#langue").append(`<option value="${langue._name}">${langue}</option>`);
+  });
+
+  // evenements
+  $("#continent").change(function () {
+    paginations(Object.values(Country.all_countries), elementInPagination, - pageActuelle + 1);
+  });
+  $("#langue").change(function () {
+    paginations(Object.values(Country.all_countries), elementInPagination, - pageActuelle + 1);
+  });
+  $("#nom_pays").on("input", function () {
+    paginations(Object.values(Country.all_countries), elementInPagination, - pageActuelle + 1);
   });
 });
