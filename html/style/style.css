@@ -231,6 +231,10 @@ table th, table td {
   height: auto;
 }
 
+tr:has(+ .detailsOpen) {
+  background-color: rgba(139, 139, 139, 0.2);
+}
+
 .detailsOpen {
   display: table-row !important;
   animation: scale-up-ver-top 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
