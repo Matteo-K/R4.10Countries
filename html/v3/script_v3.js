@@ -26,8 +26,8 @@ function displayAllCountries(container_selecter, array) {
       </tr>
       <tr>
         <td colspan="6">
+        <h3>Pays voisins&nbsp;:</h3>
         ${country._borders.length !== 0 ? `
-            <h3>Pays voisins&nbsp;:</h3>
             <ul>
             ${country._borders.map(voisin => `
               <li>
@@ -41,7 +41,9 @@ function displayAllCountries(container_selecter, array) {
               </li>
             `).join('')}
             </ul>
-            ` : ''}
+            ` : `
+            <span>Aucun pays voisins</span>
+            `}
           </td>
         </tr>
     `).join('')}

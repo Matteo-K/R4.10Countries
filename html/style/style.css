@@ -169,17 +169,6 @@ table th, table td {
   font-weight: bold;
 }
 
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-.pagination .spanPage {
-  font-size: 16px;
-  font-weight: bold;
-}
-
 #img_countries {
   display: none;
   position: fixed;
@@ -227,6 +216,10 @@ table th, table td {
 #table_v3 tr:nth-child(even) img {
   width: 8em;
   height: auto;
+}
+
+tr:has(+ .detailsOpen) {
+  background-color: rgba(139, 139, 139, 0.2);
 }
 
 .detailsOpen {
