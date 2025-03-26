@@ -192,6 +192,26 @@ table {
   th, td {
     text-align: center;
   }
+
+  th {
+    position: relative;
+    cursor: pointer;
+
+    img {
+      width: 30px;
+      height: auto;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      
+    }
+
+    p {
+      display: inline-block;
+      margin-right: 20px;
+    }
+  }
   
   // Style du tableau pour la réactivité
   @media (max-width: 768px) {

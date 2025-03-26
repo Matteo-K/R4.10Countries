@@ -157,6 +157,22 @@ table tbody tr td img {
 table th, table td {
   text-align: center;
 }
+table th {
+  position: relative;
+  cursor: pointer;
+}
+table th img {
+  width: 30px;
+  height: auto;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+table th p {
+  display: inline-block;
+  margin-right: 20px;
+}
 @media (max-width: 768px) {
   table table {
     width: 100%;
