@@ -134,13 +134,6 @@ form {
   color: #666; /* Texte assombri */
   cursor: not-allowed ;
   border: 1px solid #aaa ;
-
-  &::hover{
-    background-color: #ccc; /* Gris */
-    color: #666; /* Texte assombri */
-    cursor: not-allowed ;
-    border: 1px solid #aaa ;
-  }
 }
 
 .btn-stop {

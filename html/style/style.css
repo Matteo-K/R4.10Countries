@@ -111,12 +111,6 @@ form fieldset div span {
   cursor: not-allowed;
   border: 1px solid #aaa;
 }
-#prec:disabled::hover, #suiv:disabled::hover {
-  background-color: #ccc; /* Gris */
-  color: #666; /* Texte assombri */
-  cursor: not-allowed;
-  border: 1px solid #aaa;
-}
 
 .btn-stop {
   width: -moz-fit-content;
