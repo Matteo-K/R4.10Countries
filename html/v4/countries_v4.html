@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" 
+    content="Partie 2 du projet : R4.A.10. 
+    L’objectif de ce projet est de construire une WebApp qui affichera des informations sur 
+    les Pays du Monde, et permettra de rechercher, trier, filtrer les pays et leurs informations 
+    en fonction de divers critères qui vous seront détaillés ultérieurement."
+  >
+  <meta name="keywords" content="WebApp, R4.A.10, Pays du Monde">
+  <meta name="author" content="Kylian HOUEDEC, KERVADEC Mattéo">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R4.A.10 - Kylian, Mattéo</title>
+  <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+  <header>
+    <img src="../assets/img/kh.png" alt="Kylian HOUEDEC" title="Kylian HOUEDEC">
+    <div>
+      <h1>R4.A.10 Complément Web</h1>
+      <h2>Kylian HOUEDEC & Mattéo KERVADEC</h2>
+    </div>
+    <img src="../assets/img/logo_MK.svg" alt="Mattéo Kervadec" title="Mattéo Kervadec">
+  </header>
+  <main>
+    <section id="img_countries">
+      <img src="../assets/img/close.png" alt="close" title="close">
+      <img id="img_country" src="" alt="" title="">
+    </section>
+
+
+    <section id="filtre">
+      <article>
+        <label for="continent">Continent</label>
+        <select name="continent" id="continent">
+          <option value="default">-- Choisissez un continent --</option>
+        </select>
+      </article>
+
+      <article>
+        <label for="langue">Langue</label>
+        <select name="langue" id="langue">
+          <option value="default">-- Choisissez une langue --</option>
+        </select>
+      </article>
+
+      <article>
+        <label for="nom_pays">Nom du pays</label>
+        <input type="text" name="nom_pays" id="nom_pays" placeholder="Nom du pays">
+      </article>
+    </section>
+
+    <h3 class="spanPage">Page 1</h3>
+
+    <table id="table_v3">
+      <thead>
+        <td>Nom en français</td>
+        <td>Population</td>
+        <td>Surface</td>
+        <td>Densité de population</td>
+        <td>Continent d'appartenance</td>
+        <td>Drapeau</td>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button class="exec-btn" id="prec">PRÉC</button>
+      <span class="spanPage">Page 1</span>
+      <button class="exec-btn" id="suiv">SUIV</button>
+    </div>
+    
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../data/countries.js"></script>
+  <script src="../data/class_currency.js"></script>
+  <script src="../data/class_language.js"></script>
+  <script src="../data/class_country.js"></script>
+  <script src="script_v3.js"></script>
+</body>
+</html>
