@@ -222,7 +222,7 @@ function affiche_question(partie, questions) {
 
   $("main").append(html);
 
-  $(".exec-btn").on("click", () => {
+  $(".exec-btn").on("click", function () {
     let func = $(this).data("func");
     if (typeof window[func] === "function") {
       window[func]();
