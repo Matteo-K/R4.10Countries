@@ -31,12 +31,18 @@ class Country {
    * Retourne la densité de population du pays (hab. / Km2)
    * @returns Densité de population (hab. / Km2)
    */
-  get getPopDensity(){
+  get getPopDensity() {
     let countrie = Country._countries.find(
       c => c.alpha3Code === this._alpha3Code
-    )
+    );
+
+    if (!countrie || !countrie.area || countrie.area === 0) {
+        return 0; // Retourne 0 si la surface est invalide
+    }
+
     return this._population / countrie.area;
-  }
+}
+
 
   /**
    * Retourne un tableau des pays frontaliers (les objets Country, pas les codes).
