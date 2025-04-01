@@ -239,6 +239,12 @@ function affiche_question(partie, questions) {
   $(".btn-stop").on("click", (event) => {
     event.preventDefault();
     event.currentTarget.parentElement.classList.toggle("stop-animation");
+    let element = event.currentTarget;
+    if (element.textContent.startsWith("Stop")) {
+      element.textContent = "Start animation";
+    } else {
+      element.textContent = "Stop animation";
+    }
   });
 }
 
