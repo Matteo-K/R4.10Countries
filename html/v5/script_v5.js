@@ -133,7 +133,7 @@ function paginations(array, nbElements = elementInPagination, progression) {
 
     // Mettre à jour les boutons de pagination
     $("#prec").prop("disabled", pageActuelle === 1);
-    $("#suiv").prop("disabled", pageActuelle === totalPages);
+    $("#suiv").prop("disabled", pageActuelle === totalPages || totalPages === 0);
 
     // Mettre à jour l'affichage de la page
     $(".spanPage").text(`Page ${pageActuelle}`);
