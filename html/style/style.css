@@ -249,10 +249,9 @@ table th p {
   padding: 0;
 }
 #table_v3 tr:nth-child(even) .voisin {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-auto-rows: minmax(100px, auto);
-  grid-gap: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 #table_v3 tr:nth-child(even) img {
   width: 8em;
@@ -332,11 +331,6 @@ tr:has(+ .detailsOpen) {
   box-shadow: #141414;
 }
 
-@media (max-width: 1100px) {
-  .voisin {
-    grid-template-columns: repeat(3, auto) !important;
-  }
-}
 @media (max-width: 768px) {
   h1 {
     font-size: 1.5em !important;

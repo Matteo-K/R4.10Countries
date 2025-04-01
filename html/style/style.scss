@@ -295,10 +295,9 @@ table {
     padding: 0;
   }
   .voisin {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-auto-rows: minmax(100px, auto);
-    grid-gap: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
   }
 
   img {
@@ -413,12 +412,6 @@ tr:has(+ .detailsOpen) {
     select, input {
       @include input-style;
     }
-  }
-}
-
-@media (max-width: 1100px) {
-  .voisin {
-    grid-template-columns: repeat(3, auto) !important;
   }
 }
 
