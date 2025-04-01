@@ -127,6 +127,10 @@ form fieldset div span {
   initial-value: 0deg;
   inherits: false;
 }
+#table_v3 tr:nth-child(4n-3) {
+  background-color: #f9f9f9;
+}
+
 table {
   width: 100%;
   table-layout: fixed;
@@ -204,6 +208,7 @@ table th p {
   background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
+  z-index: 15;
 }
 #img_countries img:not(#img_country) {
   position: absolute;
@@ -231,13 +236,24 @@ table th p {
 #table_v3 tr:nth-child(even) {
   display: none;
 }
-#table_v3 tr:nth-child(even) td ul {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: minmax(100px, auto);
-  grid-gap: 10px;
+#table_v3 tr:nth-child(even) div:nth-child(1) {
+  padding-left: 15px;
+  text-align: left;
+  height: 100%;
+  float: left;
+}
+#table_v3 tr:nth-child(even) div:nth-child(1) ul {
+  min-height: 100px;
+}
+#table_v3 tr:nth-child(even) ul {
   list-style: none;
   padding: 0;
+}
+#table_v3 tr:nth-child(even) .voisin {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 10px;
 }
 #table_v3 tr:nth-child(even) img {
   width: 8em;
@@ -245,7 +261,7 @@ table th p {
 }
 
 tr:has(+ .detailsOpen) {
-  background-color: rgba(139, 139, 139, 0.2);
+  background-color: rgba(139, 139, 139, 0.2) !important;
 }
 
 .detailsOpen {
@@ -304,7 +320,7 @@ tr:has(+ .detailsOpen) {
 }
 #filtre div select, #filtre div input, #filtre article select, #filtre article input {
   padding: 15px;
-  border: 3px solid #005bb5;
+  border: 3px solid #141414;
   color: #141414;
   border-radius: 8px;
   font-size: 1rem;
@@ -312,12 +328,30 @@ tr:has(+ .detailsOpen) {
   background-color: #fff;
 }
 #filtre div select:focus, #filtre div input:focus, #filtre article select:focus, #filtre article input:focus {
-  border-color: #00284f;
+  border-color: black;
   outline: none;
   box-shadow: #141414;
 }
 
+@media (max-width: 1100px) {
+  .voisin {
+    grid-template-columns: repeat(3, auto) !important;
+  }
+}
 @media (max-width: 768px) {
+  h1 {
+    font-size: 1.5em !important;
+  }
+  h2 {
+    font-size: 1em !important;
+  }
+  #part2 table {
+    zoom: 0.6;
+  }
+  header {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
   main {
     padding: 10px;
   }

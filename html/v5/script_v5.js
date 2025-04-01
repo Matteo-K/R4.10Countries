@@ -22,47 +22,70 @@ const langues = Object.values(Language.all_language).sort((langue1, langue2) => 
 
 function displayAllCountries(container_selecter, array) {
     const html = `
-    ${array.map(country => `
-      <tr id="${country._alpha3Code}" onclick="clickCountry(event)">
-        <td>${country._name || "N/A"}</td>
-        <td>${country._population ? country._population + " hab." : "N/A"}</td>
-        <td>${country._area ? Math.round(country._area) + " km<sup>2</sup>" : "N/A"}</td>
-        <td>${country.getPopDensity ? parseFloat(country.getPopDensity).toFixed(3) + " hab/km<sup>2</sup>" : "N/A"}</td>
-        <td>${country._region || "N/A"}</td>
-        <td>
-          <img 
-            src="${country._img || "../assets/img/drapeau_default.png"}" 
-            alt="Drapeau du pays ${country._name || "N/A"}" 
-            title="${country._name || "N/A"}" 
-          >
-        </td>
-      </tr>
-      <tr>
-        <td colspan="6">
-        <h3>Pays voisins&nbsp;:</h3>
-        ${country._borders.length !== 0 ? `
-            <ul>
-            ${country._borders.map(voisin => `
-              <li>
-                <figure>
-                  <img src="${Country.all_countries[voisin]?._img || "../assets/img/drapeau_default.png"}" 
-                    alt="${Country.all_countries[voisin]?._name || "N/A"}" 
-                    title="${Country.all_countries[voisin]?._name || "N/A"}"
-                  >
-                  <figcaption>${Country.all_countries[voisin]?._name || "N/A"}</figcaption>
-                </figure>
-              </li>
-            `).join('')}
-            </ul>
-            ` : `
-            <span>Aucun pays voisins</span>
-            `}
+    ${array.map(country => {
+      const voisins = country._borders;
+      const voisins_size = voisins.length;
+      const monnaies = country.getCurrencies;
+      const monnaies_size = monnaies.length;
+
+      return `
+        <tr id="${country._alpha3Code}" onclick="clickCountry(event)">
+          <td>${country._name || "N/A"}</td>
+          <td>${country._population ? country._population + " hab." : "N/A"}</td>
+          <td>${country._area ? Math.round(country._area) + " km<sup>2</sup>" : "N/A"}</td>
+          <td>${country.getPopDensity ? parseFloat(country.getPopDensity).toFixed(3) + " hab/km<sup>2</sup>" : "N/A"}</td>
+          <td>${country._region || "N/A"}</td>
+          <td>
+            <img 
+              src="${country._img || "../assets/img/drapeau_default.png"}" 
+              alt="Drapeau du pays ${country._name || "N/A"}" 
+              title="${country._name || "N/A"}" 
+            >
           </td>
         </tr>
-    `).join('')}
+        <tr>
+          <td colspan="6">
+            <div>
+              <h3>Complément</h3>
+              <ul>
+                <li>Capital : ${country._capital}</li>
+              </ul>
+              <h3>Monnaie${monnaies_size > 1 ? "s" : ""}</h3>
+              ${monnaies !== 0 ? `
+              <ul>
+                ${monnaies.map((monnaie) => `
+                  <li>${monnaie.toString()}</li>
+                `).join('')}
+              </ul>
+              ` : `
+              <span>${country._name} n'a pas de monnaie</span>
+              `}
+            </div>
+            <div>
+              <h3>Pays voisin${voisins_size > 1 ? "s" : ""}&nbsp;:</h3>
+              ${voisins_size !== 0 ? `
+              <ul class="voisin">
+                ${voisins.map(voisin => `
+                <li>
+                  <figure>
+                    <img src="${Country.all_countries[voisin]?._img || "../assets/img/drapeau_default.png"}" 
+                      alt="${Country.all_countries[voisin]?._name || "N/A"}" 
+                      title="${Country.all_countries[voisin]?._name || "N/A"}"
+                    >
+                    <figcaption>${Country.all_countries[voisin]?._name || "N/A"}</figcaption>
+                  </figure>
+                </li>
+              `).join('')}
+              </ul>
+              ` : `
+              <span>${country._name} n'a pas de pays voisin</span>
+              `}
+            </div>
+          </td>
+        </tr>
+      `
+    }).join('')}
   `;
-
-
     $(container_selecter).append(html)
 }
 
