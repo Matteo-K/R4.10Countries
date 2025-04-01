@@ -37,6 +37,7 @@ function moreNeighbors() {
       console.log(voisin.toString());
     })
   });
+  return moreNeighbors;
 }
 
 /**
@@ -48,6 +49,7 @@ function neighborless() {
   );
 
   console.log(res);
+  return res;
 }
 
 /**
@@ -70,6 +72,7 @@ function moreLanguages() {
       console.log(langue.toString());
     })
   });
+  return moreLanguages;
 }
 
 /**
@@ -122,6 +125,7 @@ function withoutCommonCurrency() {
   });
 
   console.log(res);
+  return res;
 }
 
 
@@ -142,6 +146,7 @@ function sortingDecreasingDensity() {
   );
 
   console.log(res);
+  return res;
 }
 
 /**
