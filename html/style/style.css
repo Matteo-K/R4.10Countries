@@ -144,7 +144,6 @@ table thead {
 }
 table thead th {
   padding: 12px 15px;
-  text-align: left;
   border-bottom: 2px solid #ddd;
 }
 table tbody tr:nth-child(even) {
