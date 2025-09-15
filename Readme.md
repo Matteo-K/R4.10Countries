@@ -26,7 +26,7 @@ Les données qui serviront à remplir votre application proviendront d’une API
 
 - [Sujet partie 1](sujet/Projet%20Countries%20-%20Partie%201.pdf)
 - [Sujet partie 2]()
-- [Répartition des tâches](./participation.txt)
+- [Répartition des tâches](./html/participation.txt)
 - [Page de test](https://matteo-k.github.io/R4.10Countries/html/test/test.html)
 - [Version 1](https://matteo-k.github.io/R4.10Countries/html/v1/countries_v1.html)
 - [Version 2](https://matteo-k.github.io/R4.10Countries/html/v2/countries_v2.html)
